@@ -1,25 +1,23 @@
 bool checkArmstrong(int n){
+	//Write your code here
 	int count = 0;
 	int sum = 0;
 	int ld;
-	vector <int> v;
 	int og=n;
-	bool flag;
 
 	while(n>0){
 		count++;
+		n /= 10;
+	}
+	
+	n = og;
+
+	while(n>0){
 		ld = n%10;
-		v.push_back(ld);
+		sum += pow(ld, count);
 		n /= 10;
 	}
 
-	if(n<1){ 
-		for(int i=0; i<v.size(); i++){
-			sum += pow(v[i], count);
-		}
-		flag=true;
-	}
-
-	if(sum==og && flag==true) return true;
+	if(sum==og) return true;
 	return false;
 }
